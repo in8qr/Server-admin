@@ -14,7 +14,6 @@ import { appsRouter } from "./routes/apps.js";
 import { systemRouter } from "./routes/system.js";
 import { sessionMiddleware, requireAuth, loadUser } from "./auth.js";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = process.env.PORT ?? 8289;
 
