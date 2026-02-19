@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+server/node_modules/
+client/node_modules/
+
+# Build output
+server/dist/
+client/dist/
+
+# Data (optional: remove if you want to track users/apps in git)
+server/data/
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Logs and OS
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
