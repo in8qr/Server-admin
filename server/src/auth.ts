@@ -5,6 +5,8 @@ import { getUsers, type User } from "./lib/store.js";
 
 const SESSION_SECRET = process.env.SESSION_SECRET ?? "change-me-in-production";
 const COOKIE_MAX_AGE = 7 * 24 * 60 * 60 * 1000; // 7 days
+// Set COOKIE_SECURE=true when behind HTTPS. Default false so http://IP:8289 works.
+const COOKIE_SECURE = process.env.COOKIE_SECURE === "true";
 
 declare module "express-serve-static-core" {
   interface Request {
@@ -18,7 +20,7 @@ export const sessionMiddleware = session({
   secret: SESSION_SECRET,
   maxAge: COOKIE_MAX_AGE,
   sameSite: "lax",
-  secure: process.env.NODE_ENV === "production",
+  secure: COOKIE_SECURE,
   httpOnly: true,
 });
 
