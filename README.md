@@ -75,15 +75,15 @@ Copy `.env.example` to `.env` and set:
 
 ## Deploy on Linux (e.g. same server as AyaEye)
 
-1. Clone/build on the server and set `.env` (including a strong `SESSION_SECRET`).
-2. Run setup once to create the admin user, then use the dashboard to add your app URLs.
-3. Run behind your reverse proxy (e.g. Nginx or Caddy) and put it behind Cloudflare as you prefer. Use HTTPS in production so the session cookie can be `secure`.
-4. Optional: run with PM2:
+See **[LINUX-SETUP.md](./LINUX-SETUP.md)** for a full step-by-step guide (directory, clone, install, build, `.env`, admin user, PM2, optional Nginx).
 
-   ```bash
-   cd /path/to/Mjsrvr && npm run build && cd server && pm2 start dist/index.js --name mjsrvr
-   pm2 save
-   ```
+Quick version: clone, `npm install` (root + server + client), `npm run build`, copy `.env.example` to `.env` and set `SESSION_SECRET`, create admin via `/api/auth/setup`, then run with PM2:
+
+```bash
+cd /path/to/Mjsrvr
+pm2 start ecosystem.config.yml
+pm2 save && pm2 startup
+```
 
 ## Temperature
 

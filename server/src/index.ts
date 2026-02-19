@@ -1,8 +1,14 @@
+import { config } from "dotenv";
 import express from "express";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 import { existsSync } from "fs";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const repoRootEnv = path.join(__dirname, "..", "..", ".env");
+if (existsSync(repoRootEnv)) config({ path: repoRootEnv });
+
 import { authRouter } from "./routes/auth.js";
 import { appsRouter } from "./routes/apps.js";
 import { systemRouter } from "./routes/system.js";
